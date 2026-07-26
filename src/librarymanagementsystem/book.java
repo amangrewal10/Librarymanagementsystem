@@ -10,6 +10,7 @@ public class book extends libraryitem implements borrowable {
     private ArrayList<LocalDate> borrowingDates = new ArrayList<LocalDate>();
     private ArrayList<String> borrowedUserIDs = new ArrayList<String>();
 
+ LocalDate lt = LocalDate.now();   
 public book(String userID,int overdueDays,int loanPeriod){
 super(userID,overdueDays,loanPeriod);
     
@@ -24,8 +25,8 @@ public LocalDate processBorrowing (ArrayList<LocalDate> borrowingdates){
 
 }
 
-public int calculateLateFee(){
-
+public int calculateLateFee(int overdueDays){
+return overdueDays*2;
 }
 
 public int validateBorrowedDays(){
@@ -52,7 +53,7 @@ public int getBorrowedPeriod(){
 return borrowedPeriod;
 }
 
-public void setBorrowedPeriod(){
+public void setBorrowedPeriod(int BorrowedPeriod){
 this.borrowedPeriod=borrowedPeriod;
 }  
 
@@ -60,7 +61,7 @@ public String getISBN(){
 return ISBN;
 }
 
-public void setISBN(){
+public void setISBN(String ISBN){
 this.ISBN=ISBN;
 }   
 
@@ -68,13 +69,13 @@ public int getNumberCopies(){
 return numberCopies;
 }   
 
-public void setNumberCopies(){
+public void setNumberCopies(int numberCopies){
 this.numberCopies=numberCopies;
 }    
-
-public int availableCopies() {
-
-}
     
+public int getAvailableCopies() {
+return availableCopies;
+}
+
     
 }
