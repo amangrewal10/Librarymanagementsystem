@@ -6,7 +6,7 @@ abstract class libraryitem {
     private String title;
     private String author;
     private int yearPublished;
-
+    
     public libraryItem(long id,String title,String author,int yearPublished){
         super();
         setID(id);
@@ -15,14 +15,27 @@ abstract class libraryitem {
         setYearPublished(yearPublished);
     }
     
-    public String validateTitle(){
-        
+    public String validateTitle(String title){
+        if (title.length() > 5 && title.length() < 100){
+        return "Valid";
+        }else{
+        return "Untitled";  
+        }
     }
-    public  int validateYear(){
-
+    
+    public int validateYear(int year){
+    LocalDate timeNow = LocalDate.now();
+    int year = timeNow.getYear();
+  if (year <= yearPublished){
+return year;
+  }else{
+year=yearPublished;
+return year;      
+  }
     }
-    public abstract void getItemType(){
-
+    
+    public abstract void getItemType(String itemId){
+return itemId;
     }
     
     public String getId(){
