@@ -1,44 +1,54 @@
 package librarymanagementsystem;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class book extends libraryitem implements borrowable {
     private Genre genre;
-    private int borrowPeriod;
+    private int borrowedPeriod;
     private String ISBN;
     private int numberCopies;
-    private int availableCopies
+    private int availableCopies;
     private ArrayList<LocalDate> borrowingDates = new ArrayList<LocalDate>();
+  
     private ArrayList<String> borrowedUserIDs = new ArrayList<String>();
+    private String userID;
+    private int overdueDays;
+    private int loanPeriod;
 
  LocalDate lt = LocalDate.now();   
-public book(String userID,int overdueDays,int loanPeriod){
-super(userID,overdueDays,loanPeriod);
-    
+ public book(long id, String title, String author, int yearPublished,
+         String userID, int overdueDays, int loanPeriod){
+ super(id, title, author, yearPublished);
+ this.userID = userID;
+ this.overdueDays = overdueDays;
+ this.loanPeriod = loanPeriod;
 }
     
-public double calculateBorrowingFee(int loanperiod, double rateperday){
-rateperday= 1.50;
-    return loanperiod*rateperday;
-}
+ public int calculateBorrowingFee(int loadPerod){
+     double rateperday = 1.50;
+     return (int) (loadPerod * rateperday);
+ }
 
-public LocalDate processBorrowing (ArrayList<LocalDate> borrowingdates){
-
-}
+ public String processBorrowing(String userID){
+     this.userID = userID;
+     return "Borrowed by " + userID;
+ }
 
 public int calculateLateFee(int overdueDays){
 return overdueDays*2;
 }
 
 public int validateBorrowedDays(){
-
+    return 0; 
 }
     
 public String validateISBN(String ISBN){
-
+    return ISBN; // TODO: implement real validation
 }
 
-public String getItemType(String Book){
-return Book;
+public String getItemType(){
+    return "Book";
 }
 
 public Genre getGenre (){
@@ -54,7 +64,7 @@ return borrowedPeriod;
 }
 
 public void setBorrowedPeriod(int BorrowedPeriod){
-this.borrowedPeriod=borrowedPeriod;
+this.borrowedPeriod = borrowedPeriod;
 }  
 
 public String getISBN(){

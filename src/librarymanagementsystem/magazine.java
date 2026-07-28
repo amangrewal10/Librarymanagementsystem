@@ -1,4 +1,5 @@
 package librarymanagementsystem;
+import java.util.ArrayList;
 
 public class magazine extends libraryitem implements reservable{
 private int issueNumber;
@@ -12,20 +13,19 @@ super(id,title, author, yearPublished);
 }
   
 public boolean validateTimeSlot(int timeSlot){
-
+    return true; 
 }
 
-public void reserveItem(String itemId, int timeSlot, String userID){
-
+public boolean reserveItem(String itemId, int timeSlot, String userID){
+    return true; 
 }
 
 public void checkReservationStatus(String itemId){
 
 }
 
-public String getItemType(String Magazine)
-  return Magazine;
-
+public String getItemType(){
+    return "Magazine";
 }
 
 public int getIssueNumber(){

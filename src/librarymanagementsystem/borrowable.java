@@ -5,6 +5,6 @@ public interface borrowable {
 
    String processBorrowing(String userID);
    int calculateLateFee(int overdueDays);
-    calculateBorrowingFee(int loadPerod);
+   int calculateBorrowingFee(int loadPerod);
 
 }

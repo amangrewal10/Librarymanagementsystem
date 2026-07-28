@@ -1,18 +1,19 @@
 package librarymanagementsystem;
-import java.time.LocalTime;
+import java.time.LocalDate;
 
-abstract class libraryitem {
+public abstract class libraryitem {
     private long id;
     private String title;
     private String author;
     private int yearPublished;
     
-    public libraryItem(long id,String title,String author,int yearPublished){
-        super();
-        setID(id);
-        setTitle(title);
-        setAuthor(author);
-        setYearPublished(yearPublished);
+    public libraryitem(long id, String title, String author, int yearPublished) {
+
+        this.id = id;
+        this.title = validateTitle(title);
+        this.author = author;
+        this.yearPublished = validateYear(yearPublished);
+
     }
     
     public String validateTitle(String title){
@@ -24,27 +25,25 @@ abstract class libraryitem {
     }
     
     public int validateYear(int year){
-    LocalDate timeNow = LocalDate.now();
-    int year = timeNow.getYear();
-  if (year <= yearPublished){
-return year;
-  }else{
-year=yearPublished;
-return year;      
-  }
+        LocalDate timeNow = LocalDate.now();
+        int currentYear = timeNow.getYear();
+        if (currentYear <= yearPublished) {  
+            return year;
+        } else {
+            year = yearPublished;
+            return year;
+        }
     }
     
-    public abstract void getItemType(String itemId){
-return itemId;
-    }
+    public abstract String getItemType();
     
-    public String getId(){
+    public long getId(){
 return id;
     }
     public void setID(long id){
 this.id=id;
     }
-    public String getTtile(){
+    public String getTitle(){
 return title;
     }
     public void setTtile(String title){
@@ -56,8 +55,8 @@ return author;
     public void setAuthor(String author){
 this.author=author;
     }
-    public String getYearpublished(){
-return yearPublished
+    public int getYearpublished(){
+return yearPublished;
     }
     public void setYearpublished(int yearPublished){
 this.yearPublished=yearPublished;
