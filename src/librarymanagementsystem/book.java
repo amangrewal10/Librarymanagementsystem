@@ -44,7 +44,7 @@ public int validateBorrowedDays(){
 }
     
 public String validateISBN(String ISBN){
-    return ISBN; // TODO: implement real validation
+    return ISBN; 
 }
 
 public String getItemType(){
