@@ -63,7 +63,7 @@ public int getBorrowedPeriod(){
 return borrowedPeriod;
 }
 
-public void setBorrowedPeriod(int BorrowedPeriod){
+public void setBorrowedPeriod(int borrowedPeriod){
 this.borrowedPeriod = borrowedPeriod;
 }  
 
