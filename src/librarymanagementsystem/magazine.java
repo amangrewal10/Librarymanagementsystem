@@ -1,5 +1,5 @@
 package librarymanagementsystem;
-import java.util.ArrayList;
+import java.util.*;
 
 public class magazine extends libraryitem implements reservable{
 private int issueNumber;
@@ -11,17 +11,41 @@ public magazine(long id, String title, String author, int yearPublished){
 super(id,title, author, yearPublished);
 
 }
-  
+  //
 public boolean validateTimeSlot(int timeSlot){
-    return true; 
+	  try{
+		    if(timeSlot > 11 && timeSlot <=15){
+		      return true;
+		    }
+		    else {
+		    	return false;
+		    }
+
+		  }catch(Exception e){		 
+		    throw e;
+		  }
+   
 }
 
-public boolean reserveItem(String itemId, int timeSlot, String userID){
-    return true; 
+public void reserveItem(String itemId, int timeSlot, String userID){
+  Scanner in = new Scanner(System.in);
+  System.out.println("Reserve a time slot for a magazine.");
+  for(int i = 0; i >= 4;i++{
+System.out.println(timeSlot+":00");
+  }
+   timeSlot = in.nextInt();
+   reservedSlots.add(timeSlot);
+  
+  System.out.println(Enter UserID);
+  userID=in.nextLine();
+ reservedUserIDs.add(userID); 
+  
 }
 
 public void checkReservationStatus(String itemId){
-
+for(int time = 0; time <= 4;time++) {
+System.out.println(reservedSlots.get(time));		
+}
 }
 
 public String getItemType(){
