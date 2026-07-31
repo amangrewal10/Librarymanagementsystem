@@ -11,7 +11,24 @@ public magazine(long id, String title, String author, int yearPublished){
 super(id,title, author, yearPublished);
 
 }
-  //
+public void reserveItem(String itemId, int timeSlot, String userID){
+	  Scanner in = new Scanner(System.in);
+	  System.out.println("Reserve a time slot for a magazine.");
+	System.out.println("Type 11 for 11:00 am ");
+    System.out.println("Type 12 for 12:00 pm ");
+    System.out.println("Type 13 for 1:00 pm ");
+    System.out.println("Type 14 for 2:00 pm ");
+    System.out.println("Type 15 for 1:00 pm ");
+	
+	   timeSlot = in.nextInt();
+	   reservedSlots.add(timeSlot);
+	  
+	  System.out.println("Enter UserID");
+	  userID=in.nextLine();
+	 reservedUserIDs.add(userID); 
+	  
+	}
+
 public boolean validateTimeSlot(int timeSlot){
 	  try{
 		    if(timeSlot > 11 && timeSlot <=15){
@@ -23,23 +40,7 @@ public boolean validateTimeSlot(int timeSlot){
 
 		  }catch(Exception e){		 
 		    throw e;
-		  }
-   
-}
-
-public void reserveItem(String itemId, int timeSlot, String userID){
-  Scanner in = new Scanner(System.in);
-  System.out.println("Reserve a time slot for a magazine.");
-  for(int i = 0; i >= 4;i++{
-System.out.println(timeSlot+":00");
-  }
-   timeSlot = in.nextInt();
-   reservedSlots.add(timeSlot);
-  
-  System.out.println(Enter UserID);
-  userID=in.nextLine();
- reservedUserIDs.add(userID); 
-  
+		  } 
 }
 
 public void checkReservationStatus(String itemId){
