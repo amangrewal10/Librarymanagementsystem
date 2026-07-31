@@ -59,7 +59,12 @@ System.out.println("Enter admin password");
 String adminPassword = in.nextLine();  
 
  if (adminUser == userLog.get(0) && adminPassword == passwordLog.get(0) ){
-
+   int closeProgram = 0;
+while(closeProgram != -1){
+		   String itemId=" ";
+System.out.println("Enter type of library item: Book, Magazine");
+itemId = in.nextLine();
+}
 }else{
 System.out.print("Username/Password not Authorized. End of Program");
   return;
