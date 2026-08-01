@@ -36,6 +36,10 @@ public abstract class libraryitem {
     }
     
     public abstract String getItemType();
+     
+     public String toString() {
+    return id+": "+title+", "+author+", "+yearPublished;
+    }
     
     public long getId(){
 return id;
