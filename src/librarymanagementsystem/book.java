@@ -39,8 +39,13 @@ public int calculateLateFee(int overdueDays){
 return overdueDays*2;
 }
 
-public int validateBorrowedDays(){
-    return 0; 
+public boolean validateBorrowedDays(int borrowedPeriod){
+ if (borrowedPeriod % 2 == 0){
+return true;
+ }else{
+return false;
+ }
+ 
 }
     
 public String validateISBN(String ISBN){
