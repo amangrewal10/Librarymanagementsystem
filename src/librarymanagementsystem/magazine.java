@@ -1,74 +1,81 @@
 package librarymanagementsystem;
 import java.util.*;
 
-public class magazine extends libraryitem implements reservable{
-private int issueNumber;
-private boolean monthlyEdition;
-private ArrayList<Integer> reservedSlots = new ArrayList<>();
-private ArrayList<String> reservedUserIDs = new ArrayList<>();  
+public class magazine extends libraryitem implements reservable {
+    private int issueNumber;
+    private boolean monthlyEdition;
+    private ArrayList<Integer> reservedSlots = new ArrayList<>();
+    private ArrayList<String> reservedUserIDs = new ArrayList<>();
 
-public magazine(long id, String title, String author, int yearPublished){
-super(id,title, author, yearPublished);
+    public magazine(long id, String title, String author, int yearPublished) {
+        super(id, title, author, yearPublished);
+
+    }
+
+    public boolean validateTimeSlot(int timeSlot) {
+        if (timeSlot < 11 || timeSlot > 15) {
+            throw new IllegalArgumentException("Invalid time slot");
+        }
+        return true;
+    }
+
+    public boolean reserveItem(String itemId, int timeSlot, String userID) {
+        try {
+            validateTimeSlot(timeSlot);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+        if (reservedSlots.contains(timeSlot)) {
+            return false;
+        }
+
+        reservedSlots.add(timeSlot);
+        reservedUserIDs.add(userID);
+        return true;
+    }
+
+    public void checkReservationStatus(String itemId) {
+        System.out.println("Reservation schedule for \"" + getTitle() + "\" (ID: " + getId() + "):");
+        for (int slot = 11; slot <= 15; slot++) {
+            int index = reservedSlots.indexOf(slot);
+            if (index != -1) {
+                System.out.println(slot + ":00 - Booked by " + reservedUserIDs.get(index));
+            } else {
+                System.out.println(slot + ":00 - Free");
+            }
+        }
+    }
+
+    public String getItemType() {
+        return "Magazine";
+    }
+
+    public int getIssueNumber() {
+        return issueNumber;
+    }
+
+    public void setIssueNumber(int issueNumber) {
+        this.issueNumber = issueNumber;
+    }
+
+    public ArrayList<Integer> getReservedSlots() {
+        return reservedSlots;
+    }
+
+    public boolean getMonthlyEdition() {
+        return monthlyEdition;
+    }
+
+    public void setMonthlyEdition(boolean monthlyEdition) {
+        this.monthlyEdition = monthlyEdition;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Issue #: " + issueNumber + ", Monthly Edition: " + monthlyEdition;
+    }
 
 }
-public void reserveItem(String itemId, int timeSlot, String userID){
-	  Scanner in = new Scanner(System.in);
-	  System.out.println("Reserve a time slot for a magazine.");
-	System.out.println("Type 11 for 11:00 am ");
-    System.out.println("Type 12 for 12:00 pm ");
-    System.out.println("Type 13 for 1:00 pm ");
-    System.out.println("Type 14 for 2:00 pm ");
-    System.out.println("Type 15 for 1:00 pm ");
-	
-	   timeSlot = in.nextInt();
-	   reservedSlots.add(timeSlot);
-	  
-	  System.out.println("Enter UserID");
-	  userID=in.nextLine();
-	 reservedUserIDs.add(userID); 
-	  
-	}
 
-public boolean validateTimeSlot(int timeSlot){
-	  try{
-		    if(timeSlot > 11 && timeSlot <=15){
-		      return true;
-		    }
-		    else {
-		    	return false;
-		    }
-
-		  }catch(Exception e){		 
-		    throw e;
-		  } 
-}
-
-public void checkReservationStatus(String itemId){
-for(int time = 0; time <= 4;time++) {
-System.out.println(reservedSlots.get(time));		
-}
-}
-
-public String getItemType(){
-    return "Magazine";
-}
-
-public int getIssueNumber(){
-return issueNumber;
-}
-
-public void setIssueNumber(int issueNumber){
-this.issueNumber=issueNumber;
-  }
-
-public boolean getMonthlyEdition(){
-  return monthlyEdition;
-}
-
-public void setMonthlyEdition(boolean monthlyEdition){
-this.monthlyEdition=monthlyEdition;
-  }
-
-
-
-}
