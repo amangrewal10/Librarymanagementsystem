@@ -15,6 +15,8 @@ ArrayList<String> readingItem = new ArrayList<>();
 ArrayList<String> userLog = new ArrayList<>();  
 ArrayList<String> passwordLog = new ArrayList<>();
 
+File adminAccounts = new File("adminAccounts.txt"); 	
+	
 try{
 File adminAccounts = new File("adminAccounts.txt");    
 adminAccounts.createNewFile();
@@ -58,8 +60,14 @@ String adminUser = in.nextLine();
 System.out.println("Enter admin password");
 String adminPassword = in.nextLine();  
 
- if (adminUser == userLog.get(0) && adminPassword == passwordLog.get(0) ){
-   int closeProgram = 0;
+boolean userTrue =userLog.contains(adminUser);
+boolean passTrue =passwordLog.contains(adminPassword);
+
+
+
+if (userTrue){
+    if(passTrue){
+         int closeProgram = 0;
 while(closeProgram != -1){
 		   String itemId=" ";
 System.out.println("Enter type of library item: Book, Magazine");
@@ -68,7 +76,8 @@ itemId = in.nextLine();
 }else{
 System.out.print("Username/Password not Authorized. End of Program");
   return;
+    }
+    
 }
 
-}
-}
+}}
