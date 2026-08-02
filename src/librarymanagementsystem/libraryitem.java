@@ -17,7 +17,7 @@ public abstract class libraryitem {
     }
     
     public String validateTitle(String title){
-        if (title.length() > 5 && title.length() < 100){
+        if (title != null && title.length() > 5 && title.length() < 100){
         return "Valid";
         }else{
         return "Untitled";  
