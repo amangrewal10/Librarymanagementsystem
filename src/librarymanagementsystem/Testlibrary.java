@@ -326,7 +326,8 @@ public class Testlibrary {
     }
 
     public static void viewBorrowHistory() {
-        System.out.print("Enter Item ID of book to view history: ");
+     /* 
+     System.out.print("Enter Item ID of book to view history: ");
         long id = input.nextLong();
         input.nextLine();
 
@@ -344,6 +345,8 @@ public class Testlibrary {
                 }
                 return;
             }
+            */
+        
         }
         System.out.println("Book not found.");
     }
