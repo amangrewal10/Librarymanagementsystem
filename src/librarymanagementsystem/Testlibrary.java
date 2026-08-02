@@ -345,10 +345,11 @@ public class Testlibrary {
                 }
                 return;
             }
-            */
+           
         
         }
         System.out.println("Book not found.");
+ */
     }
 
     public static void checkAvailability() {
